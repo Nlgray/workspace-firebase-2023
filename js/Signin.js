@@ -6,6 +6,7 @@ const firebaseConfig = {
   messagingSenderId: "352598568614",
   appId: "1:352598568614:web:b1acd2e65514f8050f8e67",
   measurementId: "G-6EF9ZJX352"
+  
 }; 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -15,8 +16,8 @@ $('#Login').submit(function (e) {
   e.preventDefault();
   // get the user name and password from form
   // You need to change this.
-  var email = 'yilianz4@gmail.com';
-  var password = 'ddsgagafda';
+  var email = 'Nlgray@usca.edu';
+  var password = 'Natdog02!';
 
   firebase
     .auth()
@@ -45,3 +46,32 @@ $('#Login').submit(function (e) {
 });
 
 // add  a google login choice here 
+$('google').click(function(){
+var provider = new firebase.auth.googleAuthProvider();
+
+firebase.auth()
+  .signInWithPopup(provider)
+  .then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
+
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // IdP data available in result.additionalUserInfo.profile.
+      // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log("error")
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
+
+
+});
