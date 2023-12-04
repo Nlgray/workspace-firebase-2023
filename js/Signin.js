@@ -1,28 +1,29 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyDZIAVnBvB-GHlaDDO2GbOFjQhVvleb344",
-  authDomain: "database2023test.firebaseapp.com",
-  projectId: "database2023test",
-  storageBucket: "database2023test.appspot.com",
-  messagingSenderId: "352598568614",
-  appId: "1:352598568614:web:b1acd2e65514f8050f8e67",
-  measurementId: "G-6EF9ZJX352"
-  
-}; 
+  apiKey: "AIzaSyDnT30VTKNDPBc1k_76Wm1JN2btkXP1w6Y",
+  authDomain: "database-202f5.firebaseapp.com",
+  projectId: "database-202f5",
+  storageBucket: "database-202f5.appspot.com",
+  messagingSenderId: "937823630545",
+  appId: "1:937823630545:web:a3e3ebf6a72060c35981f0"
+};
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+//for people who need game rank
+
 
 // save the data
 $('#Login').submit(function (e) {
   e.preventDefault();
   // get the user name and password from form
   // You need to change this.
-  var email = 'Nlgray@usca.edu';
-  var password = 'Natdog02!';
+  var email = 'test1@gmail.com';
+  var password = 'aaassss111';
 
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then((success) => {
+    .then((_success) => {
       // Signed in
       // ...
       console.log('login in');
@@ -30,11 +31,12 @@ $('#Login').submit(function (e) {
 
       //user.updateProfile({ displayName: "Not sure" });
       if (user != null) {
-        name = user.displayName;
+        myname = user.displayName;
         email = user.email;
         photoUrl = user.photoURL;
         emailVerified = user.emailVerified;
-        console.log(name, email, emailVerified);
+        console.log(myname, email, emailVerified);
+        window.location.href = 'surveyresult.html';
       }
     })
     .catch((error) => {
@@ -63,13 +65,13 @@ firebase.auth()
       // ...
   }).catch((error) => {
     // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
+    var errorCode = errorCode;
+    var errorMessage = errorMessage;
     console.log("error")
     // The email of the user's account used.
-    var email = error.email;
+    var email = errorEmail;
     // The firebase.auth.AuthCredential type that was used.
-    var credential = error.credential;
+    var credential = errorCredential;
     // ...
   });
 
